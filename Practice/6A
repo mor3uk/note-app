@@ -1,0 +1,21 @@
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+class solver {
+	  public static void main (String[] args) throws IOException {
+	    Scanner sc = new Scanner(System.in);
+	    InputStreamReader in = new InputStreamReader(System.in);
+	    
+	    char a = (char) in.read();
+	    
+	    int b = a;
+	    
+	    System.out.println(b);
+	    
+	    
+	  }
+	  
+	}
+
+ 

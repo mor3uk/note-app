@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class solver {
+	  public static void main (String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    
+	    String str = sc.nextLine();
+	    ArrayList<String> letters = new ArrayList<>();
+	    
+	    int start = 0;
+	    int end = 0;
+	    char temp;
+	    String strTemp;
+	    
+	    for (int i = 0; i < str.length(); i++) {
+	    	if (i == 0 && Character.isAlphabetic(str.charAt(i)) || Character.isAlphabetic(str.charAt(i))
+	    			&& !Character.isAlphabetic(str.charAt(i - 1))) {
+	    		start = i;
+	    	}
+	    	if (i == str.length() - 1 && Character.isAlphabetic(str.charAt(i)) || Character.isAlphabetic(str.charAt(i))
+	    			&& !Character.isAlphabetic(str.charAt(i + 1))) {
+	    		end = i;
+	    		
+	    		strTemp = "";
+	    		
+	    		for (int j = start; j <= end; j++) {
+	    			temp = str.charAt(j);
+	    			if ((int) str.charAt(j) > 96) {
+	    				temp = (char) ((int) str.charAt(j) - 32);
+	    			}
+	    			
+	    			strTemp += temp;
+	    		}
+	    		
+	    		letters.add(strTemp);
+	    	}
+	    }
+	    
+	    for (int i = 0; i < letters.size(); i++) {
+	    	System.out.println(letters.get(i));
+	    }
+	     
+	  }
+}
+
+
+ 

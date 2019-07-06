@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class solver {
+	  public static void main (String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    
+	    String string = sc.nextLine().trim();
+	    StringBuilder str = new StringBuilder(string);
+	    
+	    int start = 0;
+	    int end = 0;
+	    String strTemp;
+	    
+	    for (int i = 0; i < str.length(); i++) {
+	    	// Проверка на несколько пробелов подряд
+	    	if (i != str.length() - 1) {
+	    		if (str.charAt(i) == ' ' && str.charAt(i + 1) == ' ') {
+	    			int j = i;
+	    			while (str.charAt(j) == ' ') {
+	    				j++;
+	    			}
+	    			
+	    			str.delete(i, j - 1);
+	    		}
+	    	}
+	    	
+	    	// Проверка на окрестность точки
+	    	if (str.charAt(i) == '.') {
+	    		if (i != str.length() - 1) {
+	    			if (str.charAt(i + 1) != ' ') {
+	    				str.insert(i + 1, ' ');
+	    			}
+	    		}
+	    		if (str.charAt(i - 1) == ' ') {
+	    			str.delete(i - 1, i);
+	    			i--;
+	    		}
+	    	}
+	    	
+	    	// Проверка на регистр
+	    	if (i < str.length() - 1) {
+	    		if ((int) str.charAt(i) > 64 && (int) str.charAt(i) < 91 && i != 0) {
+		    		if (i > 1) {
+		    			if (str.charAt(i - 1) != ' ' || str.charAt(i - 2) != '.') {
+		    				str.setCharAt(i, (char) ((int) str.charAt(i) + 32));
+		    			}
+		    		} else {
+		    			if (str.charAt(i - 1) != ' ') {
+		    				str.setCharAt(i, (char) ((int) str.charAt(i) + 32));
+		    			}
+		    		}
+		    		
+		    	}
+	    	}
+	    	if (i == 0) {
+	    		if ((int) str.charAt(i) > 96 && (int) str.charAt(i) < 123) {
+    				str.setCharAt(i, (char) ((int) str.charAt(i) - 32));
+    			}
+	    	} else if (i > 1) {
+	    		if (str.charAt(i - 1) == ' ' && str.charAt(i - 2) == '.') {
+	    			if ((int) str.charAt(i) > 96 && (int) str.charAt(i) < 123) {
+	    				str.setCharAt(i, (char) ((int) str.charAt(i) - 32));
+	    			}
+	    		}
+	    	}
+	    }
+	    
+	    System.out.print(str);
+	     
+	  }	  
+} 

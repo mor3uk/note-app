@@ -1,0 +1,94 @@
+import java.util.Scanner;
+
+class solver {
+	  public static void main (String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    
+	    String arr1[] = new String[8];
+	    
+	    for (int i = 0; i < 8; i++) {
+	    	arr1[i] = sc.nextLine();
+	    }
+	    
+	    char arr2[][] = new char[8][8];
+	    
+	    for (int i = 0; i < 8; i++) {
+	    	for (int j = 0; j < 8; j++) {
+	    		if (arr1[i].charAt(j) == '*') {
+	    			arr2[i][j] = '*';
+	    		} else {
+	    			arr2[i][j] = getCountBomb(arr1, j, i);
+	    		}
+	    	}
+	    }
+	    
+	    for (int i = 0; i < 8; i++) {
+	    	for (int j = 0; j < 8; j++) {
+	    		System.out.print(arr2[i][j]);
+	    	}
+	    	
+	    	System.out.println();
+	    }
+	    
+	  }
+	  
+	  public static char getCountBomb (String arr[], int x, int y) {
+		  char count = 0;
+		  
+		  if (x > 0) {
+			  if (arr[y].charAt(x - 1) == '*') {
+				  count++;
+			  }
+			  
+			  if (y > 0) {
+				  if (arr[y - 1].charAt(x - 1) == '*') {
+					  count++;
+				  }
+			  }
+			  
+			  if (y < 7) {
+				  if (arr[y + 1].charAt(x - 1) == '*') {
+					  count++;
+				  }
+			  }
+		  }
+		  
+		  if (x < 7) {
+			  if (arr[y].charAt(x + 1) == '*') {
+				  count++;
+			  }
+			  
+			  if (y > 0) {
+				  if (arr[y - 1].charAt(x + 1) == '*') {
+					  count++;
+				  }
+			  }
+			  
+			  if (y < 7) {
+				  if (arr[y + 1].charAt(x + 1) == '*') {
+					  count++;
+				  }
+			  }
+		  }
+		  
+		  if (y > 0) {
+			  if (arr[y - 1].charAt(x) == '*') {
+				  count++;
+			  }
+		  }
+		  
+		  if (y < 7) {
+			  if (arr[y + 1].charAt(x) == '*') {
+				  count++;
+			  }
+		  }
+		  
+		  char countChar = Character.forDigit(count, 10);
+		  
+		  return countChar;
+	  }
+	  
+	}
+
+
+ 

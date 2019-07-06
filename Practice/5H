@@ -1,0 +1,50 @@
+ 
+import java.util.Scanner;
+
+class solver {
+    public static void main (String[] args) {
+      Scanner sc = new Scanner(System.in);
+      
+      int n = sc.nextInt();
+      int m = sc.nextInt();
+      
+      int arr[][] = new int[n][m];
+      
+      for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+          arr[i][j] = sc.nextInt();
+        }
+      }
+      
+      int left = 1;
+      int top = 1;
+      int tempSum = getSum(arr, 0, 0);
+      
+      for (int i = 0; i < n - 2; i++) {
+        for (int j = 0; j < m - 2; j++) {
+          if (getSum(arr, j, i) > tempSum) {
+            left = j + 1;
+            top = i + 1;
+            tempSum = getSum(arr, j, i);
+          }
+        }
+      }
+      
+      System.out.println(top + " " + left);
+      
+     
+    }
+    
+    public static int getSum (int arr[][], int left, int top) {
+      int sum = 0;
+      
+      for (int i = top; i < top + 3; i++) {
+        for (int j = left; j < left + 3; j++) {
+          sum += arr[i][j];
+        }
+      }
+      
+      return sum;
+    }
+    
+  }
