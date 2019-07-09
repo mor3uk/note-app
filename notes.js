@@ -2,7 +2,7 @@ const ck = require('chalk');
 const fs = require('fs');
 
 /**
- * Adds note to the list
+ * Add note to the list
  * @param {string} title - a title of a note
  * @param {string} body - a body of a note
  */
@@ -26,7 +26,7 @@ const addNote = (title, body) => {
 };
 
 /**
- * Removes a title from the list
+ * Remove a title from the list
  * @param {string} title - a title of a note 
  */
 const removeNote = (title) => {
@@ -42,7 +42,7 @@ const removeNote = (title) => {
 };
 
 /**
- * Prints every note
+ * Print every note
  */
 const listNotes = () => {
     const notes = loadNotes();
@@ -59,7 +59,7 @@ const listNotes = () => {
 };
 
 /**
- * Looks for a needed note and prints it
+ * Look for a needed note and prints it
  * @param {string} title - title of a note
  */
 const readNote = (title) => {
@@ -76,7 +76,7 @@ const readNote = (title) => {
 };
 
 /**
- * Gets notes list from the file
+ * Get notes list from the file
  */
 const loadNotes = () => {
     try {
@@ -89,7 +89,7 @@ const loadNotes = () => {
 };
 
 /**
- * Saves list to the file
+ * Save list to the file
  * @param {object} notes 
  */
 const saveNotes = (notes) => {
